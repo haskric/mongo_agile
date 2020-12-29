@@ -50,7 +50,7 @@ defmodule MongoAgile.Examples.Customer.CustomerController do
 end
 ```
 
-## Writing model using MapSchema Library
+### Writing model using MapSchema Library
 
 ```elixir 
 defmodule MongoAgile.Examples.Customer.CustomerModel do
@@ -178,3 +178,20 @@ defmodule MongoAgile.Examples.Schema.SchemaModel do
 
 end
 ```
+
+## About 
+
+The mission is create a elixir library that let work easyly with MongoDB.
+
+We have create this library using the MongoDB driver for Elixir `:mongodb` and the official documentation. 
+
+Sources: 
+https://github.com/kobil-systems/mongodb 
+https://hexdocs.pm/mongodb/readme.html
+
+We want thanks the autors, and all contribuitors of the `:mongodb`, Good Job! 
+
+
+
+
+

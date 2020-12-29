@@ -23,3 +23,5 @@ erl_crash.dump
 mongo_agile-*.tar
 
 /.elixir_ls/
+
+.DS_Store

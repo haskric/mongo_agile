@@ -9,16 +9,16 @@ defmodule MongoAgile.MapSchema.IdObjectType do
   Cast string id to bson_id object.
 
   ## Example:
-    iex> MongoAgile.MapSchema.IdObjectType
+    iex> alias MongoAgile.MapSchema.IdObjectType
     iex> str_id = "5feaeb1e10fb18469bbd7336"
     iex> bson_id = BSON.ObjectId.decode!(str_id)
-    iex> IdObjectType.cast(str_id)
-    bson_id
+    iex> IdObjectType.cast(str_id) == bson_id
+    true
 
-    iex> MongoAgile.MapSchema.IdObjectType
+    iex> alias MongoAgile.MapSchema.IdObjectType
     iex> bson_id = BSON.ObjectId.decode!("5feaeb1e10fb18469bbd7336")
-    iex> IdObjectType.cast(bson_id)
-    bson_id
+    iex> IdObjectType.cast(bson_id) == bson_id
+    true
 
   """
   @spec cast(any) :: any | :error
@@ -35,7 +35,7 @@ defmodule MongoAgile.MapSchema.IdObjectType do
   Check it´s valid id
 
   ## Example:
-    iex> MongoAgile.MapSchema.IdObjectType
+    iex> alias MongoAgile.MapSchema.IdObjectType
     iex> bson_id = BSON.ObjectId.decode!("5feaeb1e10fb18469bbd7336")
     iex> IdObjectType.is_valid?(bson_id)
     true

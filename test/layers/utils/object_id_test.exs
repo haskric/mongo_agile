@@ -1,5 +1,6 @@
 defmodule MongoAgile.Utils.ObjectId.Test do
   use ExUnit.Case
+  doctest MongoAgile.MapSchema.IdObjectType
 
   test "objectid_to_string" do
 
