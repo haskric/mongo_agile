@@ -29,6 +29,12 @@ defmodule MongoAgile.BuilderQueries.CRUD.Test do
 
     delete_one "delete_page",
       where: %{ "_id" => id }
+
+    replace "replace_or_insert",
+      where: %{ "_id" => id },
+      document: doc,
+      upsert: true
+
   end
 
 
@@ -62,6 +68,25 @@ defmodule MongoAgile.BuilderQueries.CRUD.Test do
     assert doc == expected_doc
 
     result = ViewsPage.run_query("delete_page",[id: id_mongo])
+    assert result == {:ok, "it was deleted"}
+
+  end
+
+  test "replace" do
+
+    original_doc = %{
+      "_id" => "hola",
+      "title"=> "hello world",
+      "views" => 10
+    }
+
+    {:ok, ["hola"]} = ViewsPage.run_query("replace_or_insert",[id: "hola", doc: original_doc])
+
+
+    {:ok, doc} = ViewsPage.run_query("get_page",[id: "hola"])
+    assert doc == original_doc
+
+    result = ViewsPage.run_query("delete_page",[id: "hola"])
     assert result == {:ok, "it was deleted"}
 
   end

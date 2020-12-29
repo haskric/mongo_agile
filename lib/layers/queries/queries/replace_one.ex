@@ -45,6 +45,8 @@ defmodule MongoAgile.Queries.ReplaceOne do
 
   defp response_ok_update(operation) do
     cond do
+      have_upserted_ids?(operation) ->
+        {:ok , operation.upserted_ids}
       operation.modified_count > 0 and operation.matched_count > 0 ->
         {:ok , "updated"}
       operation.matched_count > 0 ->
@@ -52,6 +54,12 @@ defmodule MongoAgile.Queries.ReplaceOne do
       true ->
         {:error, "not found item"}
     end
+  end
+
+  defp have_upserted_ids?(operation) do
+    upserted_ids = operation.upserted_ids
+
+    not is_nil(upserted_ids) and upserted_ids != []
   end
 
 
