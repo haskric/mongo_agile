@@ -49,15 +49,11 @@ defmodule MongoAgile.MapSchema.IdObjectType do
 
   @spec doctest_values :: [{any, any}]
   def doctest_values do
-    #"#BSON.ObjectId<5fdca86a10fb18893febbea0>"
-
     ["5fdca86a10fb18893febbea0"]
     |> Enum.map(fn(text) ->
-      #fun_expected = "BSON.ObjectId.decode!(\"#{text}\")"
+      expected = "...> |> MongoAgile.MapSchema.IdObjectType.is_valid?()\n      true\n"
 
-      expected = "...> |> MongoAgile.MapSchema.IdObjectType.is_valid?()\n            true\n"
-
-      {text, expected}
+      {"\"#{text}\"", expected}
     end)
   end
 
