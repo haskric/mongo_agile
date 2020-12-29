@@ -11,8 +11,28 @@ def deps do
   ]
 end
 ```
+## Usage 
 
-## Usage examples:
+The definition of queries are always in a module, this let us that all queries are organize in controllers that will have multiples queries of a collection.
+
+```elixir 
+defmodule Controller do
+  use MongoAgile.Controller,
+    collection: "test",
+    pid_mongo: :mongo
+
+  find_one "get",
+    where: %{ "_id" => id }
+```
+
+Each query can have dynamic variables. When we run the queries, we will need give the value of the variables using a keyword.
+
+```elixir
+Controller.run_query("get",[id: id_mongo])
+```
+
+## Usage example:
+
 
 ### Writing queries into Controller
 
@@ -48,6 +68,24 @@ defmodule MongoAgile.Examples.Customer.CustomerController do
     where: %{}
 
 end
+```
+
+### Run queries
+
+```elixir 
+pep = CustomerModel.constructor("Pep","pep@email.com","909 909 909")
+{flag, id_mongo} = CustomerController.run_query("create",[customer: pep])
+assert flag == :ok
+
+{flag, pep_from_db} = CustomerController.run_query("get",[id: id_mongo])
+assert flag == :ok
+
+assert CustomerModel.get_name(pep_from_db) == "Pep"
+assert CustomerModel.get_contact_email(pep_from_db) == "pep@email.com"
+assert CustomerModel.get_contact_phone(pep_from_db) == "909 909 909"
+
+result = CustomerController.run_query("remove",[id: id_mongo])
+assert result == {:ok, "it was deleted"}
 ```
 
 ### Writing model using MapSchema Library
@@ -181,15 +219,13 @@ end
 
 ## About 
 
-The mission is create a elixir library that let work easyly with MongoDB.
+The mission of `:mongo_agile` is create a elixir library that let work easily with MongoDB.
 
-We have create this library using the MongoDB driver for Elixir `:mongodb` and the official documentation. 
+We have create this library using the MongoDB driver for Elixir `:mongodb` and its official documentation. We want thanks the authors, and all contributors of the `:mongodb` for the Great Job!
 
 Sources: 
 https://github.com/kobil-systems/mongodb 
 https://hexdocs.pm/mongodb/readme.html
-
-We want thanks the autors, and all contribuitors of the `:mongodb`, Good Job! 
 
 
 
