@@ -2,13 +2,16 @@ defmodule MongoAgile.Examples.Customer.CustomerModel do
 
   use MapSchema,
     schema: %{
-        "_id" => :any,
+        "_id" => :mongo_id,
         "name" => :string,
         "contact" => %{
           "email" => :string,
           "phone" => :string
         },
         "state" => :string
+    },
+    custom_types: %{
+      :mongo_id => MongoAgile.MapSchema.IdObjectType
     }
 
   def constructor(name, email, phone) do
@@ -18,8 +21,5 @@ defmodule MongoAgile.Examples.Customer.CustomerModel do
     |> put_contact_phone(phone)
     |> put_state("active")
   end
-
-
-
 
 end

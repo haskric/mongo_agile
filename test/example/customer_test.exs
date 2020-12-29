@@ -1,5 +1,6 @@
 defmodule MongoAgile.Examples.Customer.Test do
   use ExUnit.Case
+  doctest MongoAgile.Examples.Customer.CustomerModel
 
   alias MongoAgile.Examples.Customer.CustomerModel
   alias MongoAgile.Examples.Customer.CustomerController
