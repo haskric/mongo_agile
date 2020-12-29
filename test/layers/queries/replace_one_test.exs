@@ -1,0 +1,57 @@
+defmodule MongoAgile.Queries.ReplaceOne.Test do
+  use ExUnit.Case
+
+  alias MongoAgile.Queries.ReplaceOne
+  alias MongoAgile.Queries.FindOne
+
+  import MongoAgile.Queries.AgilQuery
+
+  test "replace_one_definition" do
+
+    query = ReplaceOne.from("test")
+    |> ReplaceOne.select_field("_id","a")
+    |> ReplaceOne.doc(%{"example"=>"hello world"})
+
+    assert query == %{
+      base: %{collection: "test", pid_mongo: :mongo, query_name: "replace"},
+      doc: %{"example"=>"hello world"},
+      selector: %{"_id" => "a"}
+    }
+  end
+
+  test "replace" do
+    result = ReplaceOne.from("test")
+      |> ReplaceOne.select_field("_id", "not_exit_id")
+      |> ReplaceOne.doc(%{"example"=> "hello"})
+      |> run_query()
+
+    assert result == {:error, "not found item"}
+  end
+
+  test "replace_one_execution" do
+    id = "id_example_replace"
+    now = System.os_time(:millisecond)
+
+    original_doc = %{
+      "_id" => id,
+      "example" => "hello world",
+      "last_update" => now
+    }
+
+    result = ReplaceOne.from("test")
+      |> ReplaceOne.select_field("_id", id)
+      |> ReplaceOne.doc(original_doc)
+      |> ReplaceOne.opts_key(:upsert, true)
+      |> run_query()
+
+    assert result == {:ok, "updated"}
+
+    result = FindOne.from("test")
+      |> FindOne.select_field("_id",id)
+      |> run_query()
+
+    assert result == {:ok, original_doc}
+
+  end
+
+end
