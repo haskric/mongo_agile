@@ -1,6 +1,5 @@
 defmodule MongoAgile.Examples.Customer.CustomerController do
-  import MongoAgile.Queries.AgilQuery
-  use MongoAgile.BuilderQueries,
+  use MongoAgile.Controller,
     collection: "test_customers",
     pid_mongo: :mongo
 

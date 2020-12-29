@@ -2,13 +2,16 @@ defmodule MongoAgile.Examples.Schema.SchemaModel do
 
   use MapSchema,
     schema: %{
-        "_id" => :any,
+        "_id" => :mongo_id,
         "schema_version" => :integer,
         "name" => :string,
         "timestamp" => %{
           "created" => :integer,
           "last_updated" => :integer
         }
+    },
+    custom_types: %{
+      :mongo_id => MongoAgile.MapSchema.IdObjectType
     }
 
   @schema_version 2
