@@ -1,4 +1,5 @@
 defmodule MongoAgile.MixProject do
+  @moduledoc false
   use Mix.Project
 
   def project do
@@ -28,7 +29,7 @@ defmodule MongoAgile.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:mongodb, ">= 0.0.0"},
+      {:mongodb, "~> 0.5.1"},
       {:map_schema, ">= 0.0.0"},
 
       # mix docs
