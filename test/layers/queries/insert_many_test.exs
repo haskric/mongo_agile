@@ -38,14 +38,14 @@ defmodule MongoAgile.Queries.InsertMany.Test do
 
     result = InsertMany.from("test")
       |> InsertMany.docs(original_docs)
-      |> run_query()
+      |> exe_query()
 
     {flag, _list_id_mongos} = result
     assert flag == :ok
 
     result = Find.from("test")
       |> Find.select_field("category", "InsertManyTest")
-      |> run_query()
+      |> exe_query()
 
     {flag, list_docs} = result
     assert flag == :ok
@@ -59,7 +59,7 @@ defmodule MongoAgile.Queries.InsertMany.Test do
 
     result = DeleteMany.from("test")
       |> DeleteMany.select_field("category", "InsertManyTest")
-      |> run_query()
+      |> exe_query()
 
     assert result == {:ok, "they was deleted"}
   end

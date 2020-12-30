@@ -24,14 +24,14 @@ defmodule MongoAgile.Queries.InsertOne.Test do
 
     result = InsertOne.from("test")
       |> InsertOne.doc(original_doc)
-      |> run_query()
+      |> exe_query()
 
     {flag, id_mongo} = result
     assert flag == :ok
 
     result = FindOne.from("test")
       |> FindOne.select_field("_id", id_mongo)
-      |> run_query()
+      |> exe_query()
 
     {flag, doc} = result
     assert flag == :ok

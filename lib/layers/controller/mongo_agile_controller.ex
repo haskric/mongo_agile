@@ -24,7 +24,7 @@ defmodule MongoAgile.Controller do
         collection: collection,
         pid_mongo: pid_mongo
 
-      defdelegate run_query(query),
+      defdelegate exe_query(query),
         to: MongoAgile.Queries.AgilQuery
 
     end

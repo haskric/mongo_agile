@@ -22,7 +22,7 @@ defmodule MongoAgile.Queries.ReplaceOne.Test do
     result = ReplaceOne.from("test")
       |> ReplaceOne.select_field("_id", "not_exit_id")
       |> ReplaceOne.doc(%{"example"=> "hello"})
-      |> run_query()
+      |> exe_query()
 
     assert result == {:error, "not found item"}
   end
@@ -41,13 +41,13 @@ defmodule MongoAgile.Queries.ReplaceOne.Test do
       |> ReplaceOne.select_field("_id", id)
       |> ReplaceOne.doc(original_doc)
       |> ReplaceOne.opts_key(:upsert, true)
-      |> run_query()
+      |> exe_query()
 
     assert result == {:ok, "updated"}
 
     result = FindOne.from("test")
       |> FindOne.select_field("_id", id)
-      |> run_query()
+      |> exe_query()
 
     assert result == {:ok, original_doc}
 

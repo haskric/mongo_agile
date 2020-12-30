@@ -26,6 +26,8 @@ defmodule MongoAgile.Queries do
       #Count
       alias MongoAgile.Queries.CountDocuments
 
+      alias MongoAgile.Queries.Aggregate
+
       # Query execution
       import MongoAgile.Queries.AgilQuery
 
