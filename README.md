@@ -12,6 +12,24 @@ def deps do
 end
 ```
 
+### Connection
+Here you can see a basic example of connection.
+
+We use the driver mongodb, then you need configure the connection following the official documentation. https://hexdocs.pm/mongodb/Mongo.html#start_link/1
+
+```elixir
+def start(_type, _args) do
+  import Supervisor.Spec
+
+  children = [
+    worker(Mongo, [[name: :mongo, database: "test", password: "*********", pool_size: 2]])
+  ]
+
+  opts = [strategy: :one_for_one, name: MyApp.Supervisor]
+  Supervisor.start_link(children, opts)
+end
+```
+
 ## Usage 
 
 The definition of queries are always in a module, this let us that all queries are organize in controllers that will have multiples queries of a collection.
