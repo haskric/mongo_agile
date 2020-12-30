@@ -1,5 +1,5 @@
 defmodule MongoAgile.Controller.ApiQueries do
-
+  @moduledoc false
   def install_api(true) do
     quote do
 
@@ -20,28 +20,28 @@ defmodule MongoAgile.Controller.ApiQueries do
 
       def put(id, doc) do
         args = [id: id, doc: doc]
-        apply(__MODULE__, :run_query, ["put",args])
+        apply(__MODULE__, :run_query, ["put", args])
       end
 
       replace "put",
-        where: %{ "_id" => id },
+        where: %{"_id" => id},
         document: doc
 
       def delete(id) do
         args = [id: id]
-        apply(__MODULE__, :run_query, ["delete",args])
+        apply(__MODULE__, :run_query, ["delete", args])
       end
 
-      delete_one "delete", where: %{ "_id" => id }
+      delete_one "delete", where: %{"_id" => id}
 
       def patch(id, changeset) do
         args = [id: id, changeset: changeset]
-        apply(__MODULE__, :run_query, ["patch",args])
+        apply(__MODULE__, :run_query, ["patch", args])
       end
 
       update_one "patch",
-        set: %{ "$set" => changeset },
-        where: %{ "_id" => id }
+        set: %{"$set" => changeset},
+        where: %{"_id" => id}
 
     end
   end

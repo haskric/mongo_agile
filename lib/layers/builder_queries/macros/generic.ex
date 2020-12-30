@@ -36,7 +36,7 @@ defmodule MongoAgile.BuilderQueries.Macros.Generic do
   defp macro_run_query(name) do
     quote bind_quoted: [name: name] do
       name_query = String.to_atom("#{name}_query")
-      name_run_query = String.to_atom("#{name}_query_run")
+      name_run_query = String.to_atom("#{name}_run_query")
 
       @doc """
       Execute the query '#{name_query}'

@@ -1,4 +1,5 @@
 defmodule MongoAgile.BuilderQueries do
+  @moduledoc false
 
   defmacro __using__(opts) do
     collection = Keyword.get(opts, :collection)
@@ -30,7 +31,7 @@ defmodule MongoAgile.BuilderQueries do
 
       """
       def run_query(name, args) do
-        name_fn = String.to_atom("#{name}_query_run")
+        name_fn = String.to_atom("#{name}_run_query")
         apply(__MODULE__, name_fn, [args])
       end
     end

@@ -1,5 +1,5 @@
 defmodule MongoAgile.Controller do
-
+  @moduledoc false
   alias MongoAgile.Controller.ApiQueries
 
   defmacro __using__(opts) do

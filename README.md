@@ -11,6 +11,7 @@ def deps do
   ]
 end
 ```
+
 ## Usage 
 
 The definition of queries are always in a module, this let us that all queries are organize in controllers that will have multiples queries of a collection.
@@ -23,6 +24,9 @@ defmodule Controller do
 
   find_one "get",
     where: %{ "_id" => id }
+
+  # .. here more queries ..
+end
 ```
 
 Each query can have dynamic variables. When we run the queries, we will need give the value of the variables using a keyword.
@@ -30,6 +34,79 @@ Each query can have dynamic variables. When we run the queries, we will need giv
 ```elixir
 Controller.run_query("get",[id: id_mongo])
 ```
+
+We would can define easily a API with the following queries.
+
+```elixir
+find_one "get", where: %{ "_id" => id }
+
+insert_one "post", document: doc
+
+replace "put",
+  where: %{ "_id" => id },
+  document: doc
+
+delete_one "delete", where: %{ "_id" => id }
+
+update_one "patch",
+  set: %{ "$set" => changeset },
+  where: %{ "_id" => id }
+```
+
+The fact this queries can be include by default in the controller, if you active the flag `install_api: true`. 
+
+Then we can define a controller with the more common operations and after add the queries that we need it. 
+
+```elixir
+defmodule MongoAgile.Examples.Api.ApiController do
+
+  use MongoAgile.Controller,
+    collection: "test_api",
+    pid_mongo: :mongo,
+    install_api: true
+  # When install_api: true
+  # You will can use the following methods
+  #
+  # get(id)
+  # post(doc)
+  # put(id, doc)
+  # delete(id)
+  # patch(id, changeset)
+
+  #... here more queries that you need ...
+
+end
+```
+
+Now, we can use the methods of our fast api.
+
+```elixir
+alias MongoAgile.Examples.Api.ApiController
+
+test "crud" do
+  {:ok, id_mongo} = ApiController.post(%{"msg" => "hello"})
+
+  {:ok, doc_in_mongo} = ApiController.get(id_mongo)
+  assert doc_in_mongo["msg"] == "hello"
+
+  result = ApiController.patch(id_mongo, %{"msg" => "hello world"})
+  assert result == {:ok, "updated"}
+
+  {:ok, doc_in_mongo} = ApiController.get(id_mongo)
+  assert doc_in_mongo["msg"] == "hello world"
+
+  result = ApiController.put(id_mongo, %{"message" => "hi"})
+  assert result == {:ok, "updated"}
+
+  {:ok, doc_in_mongo} = ApiController.get(id_mongo)
+  assert doc_in_mongo["msg"] == nil
+  assert doc_in_mongo["message"] == "hi"
+
+  result = ApiController.delete(id_mongo)
+  assert result == {:ok, "it was deleted"}
+end
+```
+
 
 ## Usage example:
 
@@ -221,12 +298,14 @@ end
 
 The mission of `:mongo_agile` is create a elixir library that let work easily with MongoDB.
 
-We have create this library using the MongoDB driver for Elixir `:mongodb` and its official documentation. We want thanks the authors, and all contributors of the `:mongodb` for the Great Job!
+### Thanks
+
+We have create this library using the MongoDB driver for Elixir `:mongodb` and its official documentation. We want thanks the authors, and all contributors of the `:mongodb` for the Great Job! Thanks.
 
 Sources: 
-https://github.com/kobil-systems/mongodb 
-https://hexdocs.pm/mongodb/readme.html
-
+* https://github.com/kobil-systems/mongodb 
+* https://hexdocs.pm/mongodb/readme.html
+* https://docs.mongodb.com/manual/
 
 
 

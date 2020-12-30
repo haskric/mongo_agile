@@ -1,10 +1,9 @@
 defmodule MongoAgile.BuilderQueries.Builder do
-
+  @moduledoc false
   def into(keyword, module_model) do
-    map = Enum.into(keyword,%{})
+    map = Enum.into(keyword, %{})
     apply(module_model, :put, [map])
   end
-
   def build(query, model_attrs, module) do
     model_attrs
     |> Map.keys()
@@ -15,7 +14,6 @@ defmodule MongoAgile.BuilderQueries.Builder do
       |> add_attr(key, value, module)
     end)
   end
-
 
   @options_keys [
     :limit,
@@ -45,7 +43,7 @@ defmodule MongoAgile.BuilderQueries.Builder do
     apply(module, :docs, [acc_query, value])
   end
   defp add_attr(acc_query, key, value, module) when key in @options_keys do
-    apply(module,:opts_key,[acc_query, key, value])
+    apply(module, :opts_key, [acc_query, key, value])
   end
 
   # Using mapSchemas in macros, this case never should be happen

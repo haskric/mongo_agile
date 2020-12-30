@@ -7,9 +7,14 @@ defmodule MongoAgile.MixProject do
       version: "0.7.0",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
       deps: deps(),
+      name: "mongo_agile",
+      source_url: "https://github.com/haskric/mongo_agile",
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
+      docs: docs()
     ]
   end
 
@@ -37,6 +42,32 @@ defmodule MongoAgile.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+    ]
+  end
+
+  def docs do
+    [
+      main: "MongoAgile",
+      extras: [
+        "README.md"
+      ]
+    ]
+  end
+
+  defp description do
+    "Mongo Agile Library for Elixir, with a micro-language integrated query"
+  end
+
+  defp package do
+    [
+      files: [
+        "lib",
+        "LICENSE",
+        "mix.exs",
+        "README.md"
+      ],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/haskric/mongo_agile"}
     ]
   end
 end
