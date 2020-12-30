@@ -1,4 +1,5 @@
 defmodule MongoAgile.Utils.ObjectId.Test do
+  @moduledoc false
   use ExUnit.Case
   doctest MongoAgile.MapSchema.IdObjectType
 

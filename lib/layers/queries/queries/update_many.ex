@@ -10,8 +10,7 @@ defmodule MongoAgile.Queries.UpdateMany do
   },
   custom_types: %{
     "<query_base>" => MongoAgile.Queries.Helper.Base.Type,
-    "<query_update>" => MongoAgile.Queries.Helper.Update.Type,
-    :keyword => MongoAgile.MapSchema.KeywordType
+    "<query_update>" => MongoAgile.Queries.Helper.Update.Type
   }
 
   use MongoAgile.Queries.Helper.Common

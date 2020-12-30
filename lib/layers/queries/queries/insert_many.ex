@@ -8,8 +8,7 @@ defmodule MongoAgile.Queries.InsertMany do
       :opts => :keyword
   },
   custom_types: %{
-    "<query_base>" => MongoAgile.Queries.Helper.Base.Type,
-    :keyword => MongoAgile.MapSchema.KeywordType
+    "<query_base>" => MongoAgile.Queries.Helper.Base.Type
   }
 
   use MongoAgile.Queries.Helper.Common

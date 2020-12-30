@@ -1,4 +1,8 @@
 defmodule MongoAgile.MapSchema.IdObjectType do
+  @moduledoc """
+  You can use this customtype of MapSchema for can use BSON_ID,
+  and parse to json easily.
+  """
 
   @behaviour MapSchema.CustomType
 
@@ -25,11 +29,10 @@ defmodule MongoAgile.MapSchema.IdObjectType do
   def cast(value) when is_bitstring(value) do
     BSON.ObjectId.decode!(value)
   end
-  def cast( bson_id = %BSON.ObjectId{}) do
+  def cast(bson_id = %BSON.ObjectId{}) do
     bson_id
   end
   def cast(_), do: :error
-
 
   @doc """
   Check it´s valid id
