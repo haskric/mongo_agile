@@ -26,7 +26,8 @@ defmodule MongoAgile.Queries.CountDocuments do
     Mongo.count_documents(pid_mongo, collection, selector, opts)
   end
 
+  ## Always return {:ok, count}
+  ## https://github.com/kobil-systems/mongodb/blob/v0.5.1/lib/mongo.ex#L331
   def return({:ok, count}), do: {:ok, count}
-  def return(_), do: {:error, "couldnt count the documents"}
 
 end

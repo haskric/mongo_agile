@@ -16,6 +16,9 @@ defmodule MongoAgile.BuilderQueries.CRUDMany.Test do
           "valid" => :bool
      }
 
+    count "count_by_category",
+     where: %{"category" => category}
+
     find "find_by_category",
       where: %{"category" => category}
 
@@ -38,6 +41,9 @@ defmodule MongoAgile.BuilderQueries.CRUDMany.Test do
 
     result = Measure.run_query("validation", [category: "CRUDMany"])
     assert result == {:ok, "they was updated"}
+
+    result = Measure.run_query("count_by_category", [category: "CRUDMany"])
+    assert result == {:ok, 3}
 
     result = Measure.run_query("find_by_category", [category: "CRUDMany"])
 

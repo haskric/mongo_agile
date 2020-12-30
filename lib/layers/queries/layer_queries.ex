@@ -20,6 +20,9 @@ defmodule MongoAgile.Queries do
       alias MongoAgile.Queries.DeleteMany
       alias MongoAgile.Queries.DeleteOne
 
+      #Replace
+      alias MongoAgile.Queries.ReplaceOne
+
       #Count
       alias MongoAgile.Queries.CountDocuments
 

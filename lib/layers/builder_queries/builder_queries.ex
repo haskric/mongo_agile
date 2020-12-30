@@ -27,6 +27,8 @@ defmodule MongoAgile.BuilderQueries do
 
       use MongoAgile.BuilderQueries.ReplaceOneBuilder
 
+      use MongoAgile.BuilderQueries.CountDocumentsBuilder
+
       @doc """
 
       """
