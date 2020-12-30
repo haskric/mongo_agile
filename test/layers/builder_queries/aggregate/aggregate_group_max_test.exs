@@ -1,31 +1,10 @@
 defmodule MongoAgile.BuilderQueries.Aggregate.GroupMax.Test do
   @moduledoc false
-  @doc """
-  I would like a style... similar this... (stage -> map)
-
-  aggregate "max_likes",
-    match: %{},
-    group: %{
-      "_id" => nil,
-      "max_likes" => %{
-        "$avg" => "$likes"
-      }
-    }
-
-  But maybe it´s more flexible this...
-
-  aggregate "", pipeline: [
-    stage1,
-    stage2,
-    ...
-  ]
-  """
   use ExUnit.Case
 
   defmodule DataSetExample do
     @moduledoc false
-    import MongoAgile.Queries.AgilQuery
-    use MongoAgile.BuilderQueries,
+    use MongoAgile.Controller,
       collection: "test_aggregate",
       pid_mongo: :mongo
 
