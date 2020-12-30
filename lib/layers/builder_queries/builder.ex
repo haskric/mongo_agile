@@ -27,7 +27,10 @@ defmodule MongoAgile.BuilderQueries.Builder do
     :skip,
     :upsert,
     :continue_on_error,
-    :ordered
+    :ordered,
+    :allow_disk_use,
+    :collation,
+    :use_cursor
   ]
 
   defp add_attr(acc_query, :where, value, module) do
@@ -41,6 +44,9 @@ defmodule MongoAgile.BuilderQueries.Builder do
   end
   defp add_attr(acc_query, :documents, value, module) do
     apply(module, :docs, [acc_query, value])
+  end
+  defp add_attr(acc_query, :pipeline, value, module) do
+    apply(module, :pipeline, [acc_query, value])
   end
   defp add_attr(acc_query, key, value, module) when key in @options_keys do
     apply(module, :opts_key, [acc_query, key, value])

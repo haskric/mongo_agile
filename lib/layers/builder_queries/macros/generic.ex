@@ -45,14 +45,14 @@ defmodule MongoAgile.BuilderQueries.Macros.Generic do
 
         #{name}_before(args) # Optional
         |> #{name}_query()
-        |> run_query()
+        |> exe_query()
         |> #{name}_after() # Optional
 
       """
       def unquote(name_run_query)(var!(args)) do
         Generic.generic_before(var!(args), unquote(name), __MODULE__)
         |> unquote(name_query)()
-        |> run_query()
+        |> exe_query()
         |> Generic.generic_after(unquote(name), __MODULE__)
       end
     end

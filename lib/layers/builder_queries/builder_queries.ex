@@ -29,16 +29,22 @@ defmodule MongoAgile.BuilderQueries do
 
       use MongoAgile.BuilderQueries.CountDocumentsBuilder
 
-      @doc """
+      use MongoAgile.BuilderQueries.AggregateBuilder
 
-      """
+      def run_query(name) do
+        name_fn = String.to_atom("#{name}_run_query")
+        args = []
+        apply(__MODULE__, name_fn, [args])
+      end
       def run_query(name, args) do
         name_fn = String.to_atom("#{name}_run_query")
         apply(__MODULE__, name_fn, [args])
       end
+
     end
   end
 
   @callback run_query(query :: map) :: {:ok, any} | {:error, any}
+  @callback run_query(query :: map, args :: Keyword.t()) :: {:ok, any} | {:error, any}
 
 end

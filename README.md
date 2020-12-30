@@ -126,7 +126,6 @@ test "crud" do
 end
 ```
 
-
 ## Usage example
 
 ### Writing queries into Controller
@@ -311,6 +310,32 @@ defmodule MongoAgile.Examples.Schema.SchemaModel do
 
   #... here more functions of model
 
+end
+```
+
+### Example of Aggregation in version > 0.7.0
+
+```elixir
+defmodule DataSetExample do
+  @moduledoc false
+  use MongoAgile.Controller,
+    collection: "test_aggregate",
+    pid_mongo: :mongo
+
+  find "get_all", where: %{}
+
+  aggregate "sum_views",
+    pipeline: [
+      %{
+        "$group" =>
+          %{
+          "_id" => nil,
+          "sum_views" => %{
+            "$sum" => "$views"
+          }
+        }
+      }
+    ]
 end
 ```
 

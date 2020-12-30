@@ -16,13 +16,13 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
         "$max"=> %{"measurement"=> 250},
         "$set"=> %{"valid" => true}
      })
-      |> run_query()
+      |> exe_query()
 
     assert result == {:ok, "they was updated"}
 
     result = Find.from(@collection)
       |> Find.select_field("category", "CRUDMany")
-      |> run_query()
+      |> exe_query()
 
     {flag, list_docs} = result
     assert flag == :ok
@@ -42,7 +42,7 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
 
     result = CountDocuments.from(@collection)
       |> CountDocuments.selector(%{})
-      |> run_query()
+      |> exe_query()
 
     assert result == {:ok, 3}
 
@@ -53,7 +53,7 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
 
     result = DeleteMany.from(@collection)
       |> DeleteMany.select_field("category", "CRUDMany")
-      |> run_query()
+      |> exe_query()
 
     assert result == {:ok, "they was deleted"}
   end
@@ -67,7 +67,7 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
 
     result = InsertMany.from(@collection)
       |> InsertMany.docs(original_docs)
-      |> run_query()
+      |> exe_query()
 
     {flag, _list_id_mongos} = result
     assert flag == :ok
