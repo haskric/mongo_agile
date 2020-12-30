@@ -1,23 +1,27 @@
 defmodule MongoAgile.Queries do
+  @moduledoc false
   defmacro __using__(_opts) do
 
     quote do
 
       # Find
-      alias MongoAgile.Queries.FindOne
       alias MongoAgile.Queries.Find
+      alias MongoAgile.Queries.FindOne
 
       # Insert
-      alias MongoAgile.Queries.InsertOne
       alias MongoAgile.Queries.InsertMany
+      alias MongoAgile.Queries.InsertOne
 
       # Update
-      alias MongoAgile.Queries.UpdateOne
       alias MongoAgile.Queries.UpdateMany
+      alias MongoAgile.Queries.UpdateOne
 
       # Delete
-      alias MongoAgile.Queries.DeleteOne
       alias MongoAgile.Queries.DeleteMany
+      alias MongoAgile.Queries.DeleteOne
+
+      #Count
+      alias MongoAgile.Queries.CountDocuments
 
       # Query execution
       import MongoAgile.Queries.AgilQuery

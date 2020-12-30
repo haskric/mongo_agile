@@ -4,11 +4,13 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
 
   use MongoAgile.Queries
 
+  @collection "test_crudmany"
+
   test "CRUD MANY DOCUMENTS, using $max and $set" do
 
     insert_all()
 
-    result = UpdateMany.from("test")
+    result = UpdateMany.from(@collection)
       |> UpdateMany.select_field("category", "CRUDMany")
       |> UpdateMany.update(%{
         "$max"=> %{"measurement"=> 250},
@@ -18,7 +20,7 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
 
     assert result == {:ok, "they was updated"}
 
-    result = Find.from("test")
+    result = Find.from(@collection)
       |> Find.select_field("category", "CRUDMany")
       |> run_query()
 
@@ -38,12 +40,18 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
 
     assert list_docs == expected_docs
 
+    result = CountDocuments.from(@collection)
+      |> CountDocuments.selector(%{})
+      |> run_query()
+
+    assert result == {:ok, 3}
+
     delete_all()
   end
 
   def delete_all do
 
-    result = DeleteMany.from("test")
+    result = DeleteMany.from(@collection)
       |> DeleteMany.select_field("category", "CRUDMany")
       |> run_query()
 
@@ -57,7 +65,7 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
       %{"category"=> "CRUDMany", "measurement" => 1000}
     ]
 
-    result = InsertMany.from("test")
+    result = InsertMany.from(@collection)
       |> InsertMany.docs(original_docs)
       |> run_query()
 
