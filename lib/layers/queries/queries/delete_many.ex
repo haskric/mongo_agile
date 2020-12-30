@@ -14,7 +14,7 @@ defmodule MongoAgile.Queries.DeleteMany do
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,
-    name: "delete_many"
+    name: "DeleteMany"
 
   use MongoAgile.Queries.Helper.Selector
   use MongoAgile.Queries.Helper.Opts

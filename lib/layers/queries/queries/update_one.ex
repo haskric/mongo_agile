@@ -16,7 +16,7 @@ defmodule MongoAgile.Queries.UpdateOne do
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,
-    name: "update_one"
+    name: "UpdateOne"
 
   use MongoAgile.Queries.Helper.Selector
   use MongoAgile.Queries.Helper.Opts

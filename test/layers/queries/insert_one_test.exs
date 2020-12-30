@@ -12,7 +12,7 @@ defmodule MongoAgile.Queries.InsertOne.Test do
     |> InsertOne.doc(%{"example"=>"hello world"})
 
     assert query == %{
-      base: %{collection: "test", pid_mongo: :mongo, query_name: "insert_one"},
+      base: %{collection: "test", pid_mongo: :mongo, query_name: "InsertOne"},
       doc: %{"example"=>"hello world"}
     }
   end

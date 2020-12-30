@@ -14,7 +14,7 @@ defmodule MongoAgile.Queries.InsertMany do
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,
-    name: "insert_many"
+    name: "InsertMany"
 
   use MongoAgile.Queries.Helper.DocList
   use MongoAgile.Queries.Helper.Opts

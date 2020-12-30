@@ -14,7 +14,7 @@ defmodule MongoAgile.Queries.InsertOne do
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,
-    name: "insert_one"
+    name: "InsertOne"
 
   use MongoAgile.Queries.Helper.Doc
   use MongoAgile.Queries.Helper.Opts

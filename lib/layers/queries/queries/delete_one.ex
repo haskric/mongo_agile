@@ -14,7 +14,7 @@ defmodule MongoAgile.Queries.DeleteOne do
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,
-    name: "delete_one"
+    name: "DeleteOne"
 
   use MongoAgile.Queries.Helper.Selector
   use MongoAgile.Queries.Helper.Opts

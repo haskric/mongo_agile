@@ -9,7 +9,7 @@ defmodule MongoAgile.Queries.FindOne.Test do
     |> FindOne.select_field("_id","a")
 
     assert query == %{
-      base: %{collection: "back_accounts", pid_mongo: :mongo, query_name: "find_one"},
+      base: %{collection: "back_accounts", pid_mongo: :mongo, query_name: "FindOne"},
       selector: %{"_id" => "a"}
     }
   end

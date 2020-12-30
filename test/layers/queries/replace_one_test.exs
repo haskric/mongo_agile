@@ -13,7 +13,7 @@ defmodule MongoAgile.Queries.ReplaceOne.Test do
     |> ReplaceOne.doc(%{"example"=>"hello world"})
 
     assert query == %{
-      base: %{collection: "test", pid_mongo: :mongo, query_name: "replace"},
+      base: %{collection: "test", pid_mongo: :mongo, query_name: "ReplaceOne"},
       doc: %{"example"=>"hello world"},
       selector: %{"_id" => "a"}
     }

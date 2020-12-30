@@ -9,7 +9,7 @@ defmodule MongoAgile.Queries.Find.Test do
       |> Find.opts_key(:limit, 10)
 
     assert query == %{
-      base: %{collection: "test", pid_mongo: :mongo, query_name: "find"},
+      base: %{collection: "test", pid_mongo: :mongo, query_name: "Find"},
       opts: [{:limit, 10}]
     }
   end

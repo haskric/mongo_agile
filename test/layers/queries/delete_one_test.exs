@@ -9,7 +9,7 @@ defmodule MongoAgile.Queries.DeleteOne.Test do
       |> DeleteOne.select_field("_id","a")
 
     assert query == %{
-      base: %{collection: "test", pid_mongo: :mongo, query_name: "delete_one"},
+      base: %{collection: "test", pid_mongo: :mongo, query_name: "DeleteOne"},
       selector: %{"_id" => "a"}
     }
   end

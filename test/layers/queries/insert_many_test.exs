@@ -18,7 +18,7 @@ defmodule MongoAgile.Queries.InsertMany.Test do
 
 
     expected_query = %{
-      base: %{collection: "test", pid_mongo: :mongo, query_name: "insert_many"},
+      base: %{collection: "test", pid_mongo: :mongo, query_name: "InsertMany"},
       docs: [
         %{ "category"=> "A", "product" => 102 },
         %{ "category"=> "A", "product" => 123 },

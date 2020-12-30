@@ -14,7 +14,7 @@ defmodule MongoAgile.Queries.Find do
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,
-    name: "find"
+    name: "Find"
   use MongoAgile.Queries.Helper.Selector
   use MongoAgile.Queries.Helper.Opts
 

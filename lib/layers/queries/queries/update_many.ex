@@ -16,7 +16,7 @@ defmodule MongoAgile.Queries.UpdateMany do
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,
-    name: "update_many"
+    name: "UpdateMany"
 
   use MongoAgile.Queries.Helper.Selector
   use MongoAgile.Queries.Helper.Opts

@@ -18,7 +18,7 @@ defmodule MongoAgile.Queries.ReplaceOne do
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,
-    name: "replace"
+    name: "ReplaceOne"
 
   use MongoAgile.Queries.Helper.Selector
   use MongoAgile.Queries.Helper.Doc

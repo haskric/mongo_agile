@@ -10,7 +10,7 @@ defmodule MongoAgile.Queries.UpdateOne.Test do
       |> UpdateOne.update(%{"$set" => %{ "field1" => "hello" }})
 
     assert query == %{
-      base: %{collection: "test", pid_mongo: :mongo, query_name: "update_one"},
+      base: %{collection: "test", pid_mongo: :mongo, query_name: "UpdateOne"},
       selector: %{"_id" => "a"},
       update: %{"$set" => %{"field1" => "hello"}}
     }
