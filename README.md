@@ -168,6 +168,8 @@ assert result == {:ok, "it was deleted"}
 
 ### Writing model using MapSchema Library
 
+You can use `:mongo_id => MongoAgile.MapSchema.IdObjectType` like a custom type for can use BSON_ID type, this let you encode and decode the documents to Json 
+
 ```elixir 
 defmodule MongoAgile.Examples.Customer.CustomerModel do
 
