@@ -1,16 +1,15 @@
 defmodule MongoAgile.Queries.ReplaceOne.Test do
+  @moduledoc false
   use ExUnit.Case
-
-  alias MongoAgile.Queries.ReplaceOne
   alias MongoAgile.Queries.FindOne
-
+  alias MongoAgile.Queries.ReplaceOne
   import MongoAgile.Queries.AgilQuery
 
   test "replace_one_definition" do
 
     query = ReplaceOne.from("test")
-    |> ReplaceOne.select_field("_id","a")
-    |> ReplaceOne.doc(%{"example"=>"hello world"})
+    |> ReplaceOne.select_field("_id", "a")
+    |> ReplaceOne.doc(%{"example" => "hello world"})
 
     assert query == %{
       base: %{collection: "test", pid_mongo: :mongo, query_name: "ReplaceOne"},
@@ -36,7 +35,7 @@ defmodule MongoAgile.Queries.ReplaceOne.Test do
       "_id" => id,
       "example" => "hello world",
       "last_update" => now
-    }
+   }
 
     result = ReplaceOne.from("test")
       |> ReplaceOne.select_field("_id", id)
@@ -47,7 +46,7 @@ defmodule MongoAgile.Queries.ReplaceOne.Test do
     assert result == {:ok, "updated"}
 
     result = FindOne.from("test")
-      |> FindOne.select_field("_id",id)
+      |> FindOne.select_field("_id", id)
       |> run_query()
 
     assert result == {:ok, original_doc}

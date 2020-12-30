@@ -7,11 +7,11 @@ defmodule MongoAgile.Queries.UpdateMany do
       :selector => :map,
       :update => "<query_update>",
       :opts => :keyword
-  },
+ },
   custom_types: %{
     "<query_base>" => MongoAgile.Queries.Helper.Base.Type,
     "<query_update>" => MongoAgile.Queries.Helper.Update.Type
-  }
+ }
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,

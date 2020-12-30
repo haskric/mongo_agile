@@ -10,10 +10,10 @@ defmodule MongoAgile.Queries.ReplaceOne do
       :selector => :map,
       :doc => :map,
       :opts => :keyword
-  },
+ },
   custom_types: %{
     "<query_base>" => MongoAgile.Queries.Helper.Base.Type
-  }
+ }
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,

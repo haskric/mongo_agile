@@ -1,9 +1,10 @@
 defmodule MongoAgile.Queries.InsertMany.Test do
+  @moduledoc false
   use ExUnit.Case
 
-  alias MongoAgile.Queries.InsertMany
-  alias MongoAgile.Queries.Find
   alias MongoAgile.Queries.DeleteMany
+  alias MongoAgile.Queries.Find
+  alias MongoAgile.Queries.InsertMany
 
   import MongoAgile.Queries.AgilQuery
 
@@ -11,29 +12,28 @@ defmodule MongoAgile.Queries.InsertMany.Test do
 
     query = InsertMany.from("test")
     |> InsertMany.docs([
-      %{ "category"=> "A", "product" => 102 },
-      %{ "category"=> "A", "product" => 123 }
+      %{"category"=> "A", "product" => 102},
+      %{"category"=> "A", "product" => 123}
     ])
-    |> InsertMany.docs_add(%{ "category"=> "A", "product" => 12 })
-
+    |> InsertMany.docs_add(%{"category"=> "A", "product" => 12})
 
     expected_query = %{
       base: %{collection: "test", pid_mongo: :mongo, query_name: "InsertMany"},
       docs: [
-        %{ "category"=> "A", "product" => 102 },
-        %{ "category"=> "A", "product" => 123 },
-        %{ "category"=> "A", "product" => 12 }
+        %{"category"=> "A", "product" => 102},
+        %{"category"=> "A", "product" => 123},
+        %{"category"=> "A", "product" => 12}
       ]
-    }
+  }
     assert query == expected_query
   end
 
   test "insert_many_execution" do
 
     original_docs = [
-      %{ "category"=> "InsertManyTest", "product" => 102 },
-      %{ "category"=> "InsertManyTest", "product" => 123 },
-      %{ "category"=> "InsertManyTest", "product" => 12 }
+      %{"category"=> "InsertManyTest", "product" => 102},
+      %{"category"=> "InsertManyTest", "product" => 123},
+      %{"category"=> "InsertManyTest", "product" => 12}
     ]
 
     result = InsertMany.from("test")
@@ -44,7 +44,7 @@ defmodule MongoAgile.Queries.InsertMany.Test do
     assert flag == :ok
 
     result = Find.from("test")
-      |> Find.select_field("category","InsertManyTest")
+      |> Find.select_field("category", "InsertManyTest")
       |> run_query()
 
     {flag, list_docs} = result
@@ -58,7 +58,7 @@ defmodule MongoAgile.Queries.InsertMany.Test do
     assert list_docs == original_docs
 
     result = DeleteMany.from("test")
-      |> DeleteMany.select_field("category","InsertManyTest")
+      |> DeleteMany.select_field("category", "InsertManyTest")
       |> run_query()
 
     assert result == {:ok, "they was deleted"}

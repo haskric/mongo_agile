@@ -13,11 +13,11 @@ defmodule MongoAgile.Examples.Schema.SchemaModel do
         "timestamp" => %{
           "created" => :integer,
           "last_updated" => :integer
-        }
-    },
+       }
+   },
     custom_types: %{
       :mongo_id => MongoAgile.MapSchema.IdObjectType
-    }
+   }
 
   @schema_version 2
 

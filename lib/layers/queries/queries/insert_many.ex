@@ -6,10 +6,10 @@ defmodule MongoAgile.Queries.InsertMany do
       :base => "<query_base>",
       :docs => :list,
       :opts => :keyword
-  },
+ },
   custom_types: %{
     "<query_base>" => MongoAgile.Queries.Helper.Base.Type
-  }
+ }
 
   use MongoAgile.Queries.Helper.Common
   use MongoAgile.Queries.Helper.Base,

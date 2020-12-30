@@ -31,7 +31,7 @@ defmodule MongoAgile.BuilderQueries.FindOneBuilder do
           :cursor_timeout => :any,
           :projection => :any,
           :skip => :integer
-      }
+     }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic

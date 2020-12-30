@@ -1,4 +1,5 @@
 defmodule MongoAgile.Controller.ApiQueries.Test do
+  @moduledoc false
   use ExUnit.Case
 
   alias MongoAgile.Examples.Api.ApiController

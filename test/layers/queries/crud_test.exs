@@ -1,11 +1,12 @@
 defmodule MongoAgile.Queries.CRUD.Test do
+  @moduledoc false
   use ExUnit.Case
 
   use MongoAgile.Queries
 
   test "Insert, Update $inc, $set, find and delete" do
 
-    original_doc = %{ "title"=> "hello world", "views" => 0}
+    original_doc = %{"title"=> "hello world", "views" => 0}
 
     result = InsertOne.from("test")
       |> InsertOne.doc(original_doc)
@@ -15,17 +16,17 @@ defmodule MongoAgile.Queries.CRUD.Test do
     assert flag == :ok
 
     result = UpdateOne.from("test")
-      |> UpdateOne.select_field("_id",id_mongo)
+      |> UpdateOne.select_field("_id", id_mongo)
       |> UpdateOne.update(%{
-        "$inc" => %{ "views" => 1 },
-        "$set" => %{ "title" => "Hello W0rld, Mongo Agilers.."}
-      })
+        "$inc" => %{"views" => 1},
+        "$set" => %{"title" => "Hello W0rld, Mongo Agilers.."}
+     })
       |> run_query()
 
     assert result == {:ok, "updated"}
 
     result = FindOne.from("test")
-      |> FindOne.select_field("_id",id_mongo)
+      |> FindOne.select_field("_id", id_mongo)
       |> run_query()
 
     {flag, doc} = result
@@ -34,12 +35,11 @@ defmodule MongoAgile.Queries.CRUD.Test do
     doc = doc
       |> Map.delete("_id")
 
-    expected_doc = %{ "title"=> "Hello W0rld, Mongo Agilers..", "views" => 1}
+    expected_doc = %{"title"=> "Hello W0rld, Mongo Agilers..", "views" => 1}
     assert doc == expected_doc
 
-
     result = DeleteOne.from("test")
-      |> DeleteOne.select_field("_id",id_mongo)
+      |> DeleteOne.select_field("_id", id_mongo)
       |> run_query()
 
     assert result == {:ok, "it was deleted"}

@@ -1,26 +1,25 @@
 defmodule MongoAgile.Queries.CRUDMany.Test do
+  @moduledoc false
   use ExUnit.Case
 
   use MongoAgile.Queries
-
 
   test "CRUD MANY DOCUMENTS, using $max and $set" do
 
     insert_all()
 
     result = UpdateMany.from("test")
-      |> UpdateMany.select_field("category","CRUDMany")
+      |> UpdateMany.select_field("category", "CRUDMany")
       |> UpdateMany.update(%{
-        "$max"=> %{ "measurement"=> 250 },
-        "$set"=> %{ "valid" => true }
-      })
+        "$max"=> %{"measurement"=> 250},
+        "$set"=> %{"valid" => true}
+     })
       |> run_query()
-
 
     assert result == {:ok, "they was updated"}
 
     result = Find.from("test")
-      |> Find.select_field("category","CRUDMany")
+      |> Find.select_field("category", "CRUDMany")
       |> run_query()
 
     {flag, list_docs} = result
@@ -31,11 +30,10 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
       |> Map.delete("_id")
     end)
 
-
     expected_docs = [
-      %{ "category"=> "CRUDMany", "measurement" => 250 , "valid" => true },
-      %{ "category"=> "CRUDMany", "measurement" => 250 , "valid" => true },
-      %{ "category"=> "CRUDMany", "measurement" => 1000, "valid" => true }
+      %{"category"=> "CRUDMany", "measurement" => 250 , "valid" => true},
+      %{"category"=> "CRUDMany", "measurement" => 250 , "valid" => true},
+      %{"category"=> "CRUDMany", "measurement" => 1000, "valid" => true}
     ]
 
     assert list_docs == expected_docs
@@ -43,20 +41,20 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
     delete_all()
   end
 
-  def delete_all() do
+  def delete_all do
 
     result = DeleteMany.from("test")
-      |> DeleteMany.select_field("category","CRUDMany")
+      |> DeleteMany.select_field("category", "CRUDMany")
       |> run_query()
 
     assert result == {:ok, "they was deleted"}
   end
 
-  def insert_all() do
+  def insert_all do
     original_docs = [
-      %{ "category"=> "CRUDMany", "measurement" => 10},
-      %{ "category"=> "CRUDMany", "measurement" => 100},
-      %{ "category"=> "CRUDMany", "measurement" => 1000}
+      %{"category"=> "CRUDMany", "measurement" => 10},
+      %{"category"=> "CRUDMany", "measurement" => 100},
+      %{"category"=> "CRUDMany", "measurement" => 1000}
     ]
 
     result = InsertMany.from("test")
@@ -66,7 +64,5 @@ defmodule MongoAgile.Queries.CRUDMany.Test do
     {flag, _list_id_mongos} = result
     assert flag == :ok
   end
-
-
 
 end

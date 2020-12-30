@@ -37,7 +37,7 @@ defmodule MongoAgile.BuilderQueries.FindBuilder do
           :sort => :any,
           :projection => :any,
           :skip => :integer
-      }
+     }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic

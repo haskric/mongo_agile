@@ -7,7 +7,7 @@ defmodule MongoAgile.Queries.Helper.Base do
         :query_name => :string,
         :pid_mongo => :any,
         :collection => :string
-    }
+   }
 
   @spec from(String.t(), String.t(), atom | :pid ) :: map
   def from(query_name, collection, pid_mongo) do

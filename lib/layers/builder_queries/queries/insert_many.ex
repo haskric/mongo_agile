@@ -23,7 +23,7 @@ defmodule MongoAgile.BuilderQueries.InsertManyBuilder do
           :documents => :list,
           :continue_on_error => :bool,
           :ordered => :bool
-      }
+     }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic

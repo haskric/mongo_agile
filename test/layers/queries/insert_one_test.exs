@@ -1,8 +1,9 @@
 defmodule MongoAgile.Queries.InsertOne.Test do
+  @moduledoc false
   use ExUnit.Case
 
-  alias MongoAgile.Queries.InsertOne
   alias MongoAgile.Queries.FindOne
+  alias MongoAgile.Queries.InsertOne
 
   import MongoAgile.Queries.AgilQuery
 
@@ -29,7 +30,7 @@ defmodule MongoAgile.Queries.InsertOne.Test do
     assert flag == :ok
 
     result = FindOne.from("test")
-      |> FindOne.select_field("_id",id_mongo)
+      |> FindOne.select_field("_id", id_mongo)
       |> run_query()
 
     {flag, doc} = result

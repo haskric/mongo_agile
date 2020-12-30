@@ -1,4 +1,5 @@
 defmodule MongoAgile.Queries.Find.Test do
+  @moduledoc false
   use ExUnit.Case
 
   alias MongoAgile.Queries.Find
@@ -11,7 +12,7 @@ defmodule MongoAgile.Queries.Find.Test do
     assert query == %{
       base: %{collection: "test", pid_mongo: :mongo, query_name: "Find"},
       opts: [{:limit, 10}]
-    }
+   }
   end
 
 end

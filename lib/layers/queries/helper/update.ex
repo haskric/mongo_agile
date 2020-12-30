@@ -34,7 +34,7 @@ defmodule MongoAgile.Queries.Helper.Update do
       "$push" => :map,
       "$pullAll" => :map,
       "$bit" => :map
-  }
+ }
 
   defmacro __using__(_opts) do
 

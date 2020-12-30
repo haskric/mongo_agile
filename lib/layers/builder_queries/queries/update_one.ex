@@ -22,7 +22,7 @@ defmodule MongoAgile.BuilderQueries.UpdateOneBuilder do
           :where => :map,
 
           :upsert => :bool
-      }
+     }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic

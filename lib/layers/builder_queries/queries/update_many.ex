@@ -21,7 +21,7 @@ defmodule MongoAgile.BuilderQueries.UpdateManyBuilder do
           :where => :map,
 
           :upsert => :bool
-      }
+     }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic

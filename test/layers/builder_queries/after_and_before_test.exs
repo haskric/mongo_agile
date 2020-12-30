@@ -1,7 +1,9 @@
 defmodule MongoAgile.BuilderQueries.AfterAndBefore.Test do
+  @moduledoc false
   use ExUnit.Case
 
   defmodule Measure do
+    @moduledoc false
     import MongoAgile.Queries.AgilQuery
     use MongoAgile.BuilderQueries,
       collection: "test_measures",
@@ -14,11 +16,10 @@ defmodule MongoAgile.BuilderQueries.AfterAndBefore.Test do
       end
 
     find "find_by_category",
-      where: %{ "category" => category }
-
+      where: %{"category" => category}
 
     find "find_by_section",
-        where: %{ "section" => section }
+        where: %{"section" => section}
 
       def find_by_section_after(result) do
         throw "Error_in_after"
@@ -29,7 +30,7 @@ defmodule MongoAgile.BuilderQueries.AfterAndBefore.Test do
 
   test "error_in_before" do
     try do
-      Measure.run_query("find_by_category",[category: "CRUDMany"])
+      Measure.run_query("find_by_category", [category: "CRUDMany"])
 
       assert false
     catch
@@ -40,7 +41,7 @@ defmodule MongoAgile.BuilderQueries.AfterAndBefore.Test do
 
   test "error_in_after" do
     try do
-      Measure.run_query("find_by_section",[section: "UNKNOW"])
+      Measure.run_query("find_by_section", [section: "UNKNOW"])
 
       assert false
     catch

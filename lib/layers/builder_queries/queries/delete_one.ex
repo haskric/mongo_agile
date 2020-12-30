@@ -12,7 +12,7 @@ defmodule MongoAgile.BuilderQueries.DeleteOneBuilder do
       atomize: true,
       schema: %{
           :where => :map
-      }
+     }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic

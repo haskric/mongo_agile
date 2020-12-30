@@ -23,7 +23,7 @@ defmodule Controller do
     pid_mongo: :mongo
 
   find_one "get",
-    where: %{ "_id" => id }
+    where: %{"_id" => id}
 
   # .. here more queries ..
 end
@@ -38,19 +38,19 @@ Controller.run_query("get",[id: id_mongo])
 We would can define easily a API with the following queries.
 
 ```elixir
-find_one "get", where: %{ "_id" => id }
+find_one "get", where: %{"_id" => id}
 
 insert_one "post", document: doc
 
 replace "put",
-  where: %{ "_id" => id },
+  where: %{"_id" => id},
   document: doc
 
-delete_one "delete", where: %{ "_id" => id }
+delete_one "delete", where: %{"_id" => id}
 
 update_one "patch",
-  set: %{ "$set" => changeset },
-  where: %{ "_id" => id }
+  set: %{"$set" => changeset},
+  where: %{"_id" => id}
 ```
 
 The fact this queries can be include by default in the controller, if you active the flag `install_api: true`. 
@@ -64,7 +64,7 @@ defmodule MongoAgile.Examples.Api.ApiController do
     collection: "test_api",
     pid_mongo: :mongo,
     install_api: true
-    
+
   # When install_api: true
   # You will can use the following methods
   #
@@ -121,26 +121,26 @@ defmodule MongoAgile.Examples.Customer.CustomerController do
     pid_mongo: :mongo
 
   find_one "get",
-    where: %{ "_id" => id }
+    where: %{"_id" => id}
 
   find "get_all", limit: limit
 
   find "get_active_customers",
-    where: %{ "state" => "active" },
+    where: %{"state" => "active"},
     limit: limit
 
   update "validate",
-    set: %{ "$set" => %{ "state" => "active"} },
-    where: %{ "$or" => [
-      %{ "contact.phone" => %{ "$exists" => true } },
-      %{ "contact.email" => %{ "$exists" => true } },
+    set: %{"$set" => %{"state" => "active"}},
+    where: %{"$or" => [
+      %{"contact.phone" => %{"$exists" => true}},
+      %{"contact.email" => %{"$exists" => true}},
     ]}
 
   insert_one "create", document: customer
   insert "create_customers", documents: customers
 
   delete_one "remove",
-    where: %{ "_id" => id }
+    where: %{"_id" => id}
 
   delete "remove_all",
     where: %{}
@@ -178,12 +178,12 @@ defmodule MongoAgile.Examples.Customer.CustomerModel do
         "contact" => %{
           "email" => :string,
           "phone" => :string
-        },
+       },
         "state" => :string
-    },
+   },
     custom_types: %{
       :mongo_id => MongoAgile.MapSchema.IdObjectType
-    }
+   }
 
   def constructor(name, email, phone) do
     new()
@@ -208,7 +208,7 @@ def get_before([id: id]) do
 end
 
 find_one "get",
-  where: %{ "_id" => id }
+  where: %{"_id" => id}
 
 def get_after(result_query) do
   #.. here can adapt the result of query .. 
@@ -228,7 +228,7 @@ defmodule MongoAgile.Examples.Schema.SchemaController do
   alias MongoAgile.Examples.Schema.SchemaModel
 
   find_one "get",
-    where: %{ "_id" => id }
+    where: %{"_id" => id}
 
   # When recive a document it´s procesate with the model
   # to adapt the version if it needs.
@@ -243,11 +243,11 @@ defmodule MongoAgile.Examples.Schema.SchemaController do
 
   insert_one "create", document: doc
 
-  delete_one "remove", where: %{ "_id" => id }
+  delete_one "remove", where: %{"_id" => id}
 
   replace "replace",
     document: doc,
-    where: %{ "_id" => id }
+    where: %{"_id" => id}
 
   # .. here others queries ..
 
@@ -264,10 +264,10 @@ defmodule MongoAgile.Examples.Schema.SchemaModel do
         "_id" => :mongo_id,
         "schema_version" => :integer,
         #... here more fields of schema model
-    },
+   },
     custom_types: %{
       :mongo_id => MongoAgile.MapSchema.IdObjectType
-    }
+   }
 
   alias MongoAgile.Examples.Schema.SchemaController
 

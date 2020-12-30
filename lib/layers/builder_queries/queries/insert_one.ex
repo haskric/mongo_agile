@@ -12,7 +12,7 @@ defmodule MongoAgile.BuilderQueries.InsertOneBuilder do
       atomize: true,
       schema: %{
           :document => :map
-      }
+     }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic

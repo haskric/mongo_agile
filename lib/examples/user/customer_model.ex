@@ -10,12 +10,12 @@ defmodule MongoAgile.Examples.Customer.CustomerModel do
         "contact" => %{
           "email" => :string,
           "phone" => :string
-        },
+       },
         "state" => :string
-    },
+   },
     custom_types: %{
       :mongo_id => MongoAgile.MapSchema.IdObjectType
-    }
+   }
 
   def constructor(name, email, phone) do
     new()
