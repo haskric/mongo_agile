@@ -1,4 +1,5 @@
 defmodule MongoAgile.BuilderQueries.Macros.Generic do
+  @moduledoc false
   alias MongoAgile.BuilderQueries.Builder
   alias MongoAgile.BuilderQueries.Macros.Generic
 
@@ -9,7 +10,6 @@ defmodule MongoAgile.BuilderQueries.Macros.Generic do
     ]
   end
 
-
   defp macro_map_query(name, keyword, module_builder, module_query) do
     str_keyword = Macro.to_string(keyword)
     quote bind_quoted: [
@@ -19,7 +19,7 @@ defmodule MongoAgile.BuilderQueries.Macros.Generic do
       module_query: module_query]
     do
       name_query = String.to_atom("#{name}_query")
-      module_builder = Module.concat([module_builder,Schema])
+      module_builder = Module.concat([module_builder, Schema])
       @doc """
       Build the query '#{name_query}'
       """
@@ -57,7 +57,6 @@ defmodule MongoAgile.BuilderQueries.Macros.Generic do
       end
     end
   end
-
 
   def generic_before(args, name, module) do
     name_before = String.to_atom("#{name}_before")

@@ -1,5 +1,10 @@
 defmodule MongoAgile.Examples.Schema.SchemaModel do
+  @moduledoc """
+  SchemaModel Example of model, have some example of using before and after methods.
 
+  * Schema versioning
+  * timestamp
+  """
   use MapSchema,
     schema: %{
         "_id" => :mongo_id,

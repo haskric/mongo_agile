@@ -1,4 +1,5 @@
 defmodule MongoAgile.Queries.UpdateOne do
+  @moduledoc false
   use MapSchema,
   atomize: true,
   schema: %{
@@ -50,6 +51,5 @@ defmodule MongoAgile.Queries.UpdateOne do
         {:error, "not found item"}
     end
   end
-
 
 end

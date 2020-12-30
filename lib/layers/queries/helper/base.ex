@@ -1,4 +1,5 @@
 defmodule MongoAgile.Queries.Helper.Base do
+  @moduledoc false
   use MapSchema,
     type_name: "<query_base>",
     atomize: true,

@@ -12,14 +12,15 @@ defmodule MongoAgile.BuilderQueries.ReplaceOneBuilder do
       matches the filter (default: `false`)
   """
   defmodule Schema do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :where => :map,
-        :document => :map,
+    @moduledoc false
+    use MapSchema,
+      atomize: true,
+      schema: %{
+          :where => :map,
+          :document => :map,
 
-        :upsert => :bool
-    }
+          :upsert => :bool
+      }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic
@@ -29,8 +30,8 @@ defmodule MongoAgile.BuilderQueries.ReplaceOneBuilder do
     end
   end
   defmacro replace(description, keyword) do
-    alias MongoAgile.Queries.ReplaceOne
     alias MongoAgile.BuilderQueries.ReplaceOneBuilder
+    alias MongoAgile.Queries.ReplaceOne
 
     Generic.macro_query(description, keyword, ReplaceOneBuilder, ReplaceOne)
   end

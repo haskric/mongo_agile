@@ -36,7 +36,6 @@ defmodule MongoAgile.Queries.Helper.Update do
       "$bit" => :map
   }
 
-
   defmacro __using__(_opts) do
 
     quote do
@@ -57,6 +56,5 @@ defmodule MongoAgile.Queries.Helper.Update do
     end
 
   end
-
 
 end

@@ -1,4 +1,5 @@
 defmodule MongoAgile.Queries.FindOne do
+  @moduledoc false
   use MapSchema,
     atomize: true,
     schema: %{
@@ -16,7 +17,6 @@ defmodule MongoAgile.Queries.FindOne do
     name: "find_one"
   use MongoAgile.Queries.Helper.Selector
   use MongoAgile.Queries.Helper.Opts
-
 
   def run(query) do
     pid_mongo = pid_mongo(query)

@@ -14,14 +14,15 @@ defmodule MongoAgile.BuilderQueries.UpdateOneBuilder do
       matches the filter (default: `false`)
   """
   defmodule Schema do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :set => :map,
-        :where => :map,
+    @moduledoc false
+    use MapSchema,
+      atomize: true,
+      schema: %{
+          :set => :map,
+          :where => :map,
 
-        :upsert => :bool
-    }
+          :upsert => :bool
+      }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic
@@ -31,8 +32,8 @@ defmodule MongoAgile.BuilderQueries.UpdateOneBuilder do
     end
   end
   defmacro update_one(description, keyword) do
-    alias MongoAgile.Queries.UpdateOne
     alias MongoAgile.BuilderQueries.UpdateOneBuilder
+    alias MongoAgile.Queries.UpdateOne
 
     Generic.macro_query(description, keyword, UpdateOneBuilder, UpdateOne)
   end

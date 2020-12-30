@@ -1,9 +1,7 @@
 defmodule MongoAgile.Queries.Helper.Opts do
-
+  @moduledoc false
   defmacro __using__(_opts) do
-
     quote do
-
       @spec opts(map) :: Keyword.t()
       def opts(query) do
         case apply(__MODULE__, :get_opts, [query]) do
@@ -20,13 +18,11 @@ defmodule MongoAgile.Queries.Helper.Opts do
       @spec opts_key(map, atom, any) :: map
       def opts_key(query, key, value) when is_atom(key) do
         list_opts = opts(query)
-        list_opts = list_opts ++ [{key,value}]
+        list_opts = list_opts ++ [{key, value}]
 
         opts(query, list_opts)
       end
-
     end
-
   end
 
 end

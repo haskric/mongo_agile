@@ -1,5 +1,5 @@
 defmodule MongoAgile.Queries.Helper.Selector do
-
+  @moduledoc false
   defmacro __using__(_opts) do
 
     quote do
@@ -29,7 +29,5 @@ defmodule MongoAgile.Queries.Helper.Selector do
     end
 
   end
-
-
 
 end

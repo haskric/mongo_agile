@@ -7,11 +7,12 @@ defmodule MongoAgile.BuilderQueries.InsertOneBuilder do
 
   """
   defmodule Schema do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :document => :map
-    }
+    @moduledoc false
+    use MapSchema,
+      atomize: true,
+      schema: %{
+          :document => :map
+      }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic
@@ -21,8 +22,8 @@ defmodule MongoAgile.BuilderQueries.InsertOneBuilder do
     end
   end
   defmacro insert_one(description, keyword) do
-    alias MongoAgile.Queries.InsertOne
     alias MongoAgile.BuilderQueries.InsertOneBuilder
+    alias MongoAgile.Queries.InsertOne
 
     Generic.macro_query(description, keyword, InsertOneBuilder, InsertOne)
   end

@@ -8,6 +8,7 @@ defmodule MongoAgile.BuilderQueries.DeleteManyBuilder do
   """
 
   defmodule Schema do
+    @moduledoc false
     use MapSchema,
     atomize: true,
     schema: %{
@@ -22,8 +23,8 @@ defmodule MongoAgile.BuilderQueries.DeleteManyBuilder do
     end
   end
   defmacro delete(description, keyword) do
-    alias MongoAgile.Queries.DeleteMany
     alias MongoAgile.BuilderQueries.DeleteManyBuilder
+    alias MongoAgile.Queries.DeleteMany
 
     Generic.macro_query(description, keyword, DeleteManyBuilder, DeleteMany)
   end

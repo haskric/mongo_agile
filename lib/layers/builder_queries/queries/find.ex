@@ -22,21 +22,22 @@ defmodule MongoAgile.BuilderQueries.FindBuilder do
 
   """
   defmodule Schema do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :where => :map,
+    @moduledoc false
+    use MapSchema,
+      atomize: true,
+      schema: %{
+          :where => :map,
 
-        :limit => :integer,
-        :comment => :string,
-        :cursor_type => :any,
-        :max_time => :integer,
-        :modifiers => :any,
-        :cursor_timeout => :any,
-        :sort => :any,
-        :projection => :any,
-        :skip => :integer
-    }
+          :limit => :integer,
+          :comment => :string,
+          :cursor_type => :any,
+          :max_time => :integer,
+          :modifiers => :any,
+          :cursor_timeout => :any,
+          :sort => :any,
+          :projection => :any,
+          :skip => :integer
+      }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic
@@ -46,8 +47,8 @@ defmodule MongoAgile.BuilderQueries.FindBuilder do
     end
   end
   defmacro find(description, keyword) do
-    alias MongoAgile.Queries.Find
     alias MongoAgile.BuilderQueries.FindBuilder
+    alias MongoAgile.Queries.Find
 
     Generic.macro_query(description, keyword, FindBuilder, Find)
   end

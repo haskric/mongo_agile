@@ -5,15 +5,14 @@ defmodule MongoAgile.Controller.ApiQueries do
 
       def get(id) do
         args = [id: id]
-        apply(__MODULE__, :run_query, ["get",args])
+        apply(__MODULE__, :run_query, ["get", args])
       end
 
-      find_one "get", where: %{ "_id" => id }
-
+      find_one "get", where: %{"_id" => id}
 
       def post(doc) do
         args = [doc: doc]
-        apply(__MODULE__, :run_query, ["post",args])
+        apply(__MODULE__, :run_query, ["post", args])
       end
 
       insert_one "post", document: doc

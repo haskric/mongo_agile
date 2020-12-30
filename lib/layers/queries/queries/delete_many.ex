@@ -1,4 +1,5 @@
 defmodule MongoAgile.Queries.DeleteMany do
+  @moduledoc false
   use MapSchema,
   atomize: true,
   schema: %{
@@ -39,6 +40,5 @@ defmodule MongoAgile.Queries.DeleteMany do
         {:error, e}
     end
   end
-
 
 end

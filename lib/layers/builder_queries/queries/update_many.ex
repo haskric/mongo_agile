@@ -13,14 +13,15 @@ defmodule MongoAgile.BuilderQueries.UpdateManyBuilder do
       matches the filter (default: `false`)
   """
   defmodule Schema do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :set => :map,
-        :where => :map,
+    @moduledoc false
+    use MapSchema,
+      atomize: true,
+      schema: %{
+          :set => :map,
+          :where => :map,
 
-        :upsert => :bool
-    }
+          :upsert => :bool
+      }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic
@@ -30,8 +31,8 @@ defmodule MongoAgile.BuilderQueries.UpdateManyBuilder do
     end
   end
   defmacro update(description, keyword) do
-    alias MongoAgile.Queries.UpdateMany
     alias MongoAgile.BuilderQueries.UpdateManyBuilder
+    alias MongoAgile.Queries.UpdateMany
 
     Generic.macro_query(description, keyword, UpdateManyBuilder, UpdateMany)
   end

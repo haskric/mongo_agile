@@ -1,4 +1,5 @@
 defmodule MongoAgile.Queries.UpdateMany do
+  @moduledoc false
   use MapSchema,
   atomize: true,
   schema: %{
@@ -50,6 +51,5 @@ defmodule MongoAgile.Queries.UpdateMany do
         {:error, "they wasnt found"}
     end
   end
-
 
 end

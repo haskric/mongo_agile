@@ -1,8 +1,8 @@
 defmodule MongoAgile.Queries.ReplaceOne do
-  @moduledoc """
-  Athough the method of Mongo it´s replace_one(...) we can replace many documents.
-  BE CAREFUL
-  """
+  @moduledoc false
+  #Athough the method of Mongo it´s replace_one(...) we can replace many documents.
+  #BE CAREFUL
+
   use MapSchema,
   atomize: true,
   schema: %{
@@ -61,6 +61,5 @@ defmodule MongoAgile.Queries.ReplaceOne do
 
     not is_nil(upserted_ids) and upserted_ids != []
   end
-
 
 end

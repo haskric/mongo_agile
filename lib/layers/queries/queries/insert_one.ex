@@ -1,4 +1,5 @@
 defmodule MongoAgile.Queries.InsertOne do
+  @moduledoc false
   use MapSchema,
   atomize: true,
   schema: %{
@@ -37,6 +38,5 @@ defmodule MongoAgile.Queries.InsertOne do
         {:error , "internal_error"}
     end
   end
-
 
 end

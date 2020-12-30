@@ -18,19 +18,20 @@ defmodule MongoAgile.BuilderQueries.FindOneBuilder do
     * `:skip` - The number of documents to skip before returning (Default: 0)
   """
   defmodule Schema do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :where => :map,
+    @moduledoc false
+    use MapSchema,
+      atomize: true,
+      schema: %{
+          :where => :map,
 
-        :comment => :string,
-        :cursor_type => :any,
-        :max_time => :integer,
-        :modifiers => :any,
-        :cursor_timeout => :any,
-        :projection => :any,
-        :skip => :integer
-    }
+          :comment => :string,
+          :cursor_type => :any,
+          :max_time => :integer,
+          :modifiers => :any,
+          :cursor_timeout => :any,
+          :projection => :any,
+          :skip => :integer
+      }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic
@@ -40,8 +41,8 @@ defmodule MongoAgile.BuilderQueries.FindOneBuilder do
     end
   end
   defmacro find_one(description, keyword) do
-    alias MongoAgile.Queries.FindOne
     alias MongoAgile.BuilderQueries.FindOneBuilder
+    alias MongoAgile.Queries.FindOne
 
     Generic.macro_query(description, keyword, FindOneBuilder, FindOne)
   end

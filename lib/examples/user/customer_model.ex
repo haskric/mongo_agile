@@ -1,4 +1,7 @@
 defmodule MongoAgile.Examples.Customer.CustomerModel do
+  @moduledoc """
+  CustomerModel Example of model using MapSchema
+  """
 
   use MapSchema,
     schema: %{

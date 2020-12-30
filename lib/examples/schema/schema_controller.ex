@@ -1,4 +1,8 @@
 defmodule MongoAgile.Examples.Schema.SchemaController do
+  @moduledoc """
+  SchemaController Example of controller have some example of using before and after methods.
+  """
+
   use MongoAgile.Controller,
     collection: "test_schema_versioning",
     pid_mongo: :mongo
@@ -6,7 +10,7 @@ defmodule MongoAgile.Examples.Schema.SchemaController do
   alias MongoAgile.Examples.Schema.SchemaModel
 
   find_one "get",
-    where: %{ "_id" => id }
+    where: %{"_id" => id}
   def get_after(result_query) do
     case result_query do
       {:ok, doc} ->
@@ -23,9 +27,10 @@ defmodule MongoAgile.Examples.Schema.SchemaController do
 
     [doc: doc]
   end
+
   insert_one "create", document: doc
 
-  delete_one "remove", where: %{ "_id" => id }
+  delete_one "remove", where: %{"_id" => id}
 
   def create_replace([doc: doc]) do
     doc = doc
@@ -33,8 +38,9 @@ defmodule MongoAgile.Examples.Schema.SchemaController do
 
     [doc: doc]
   end
+
   replace "replace",
     document: doc,
-    where: %{ "_id" => id }
+    where: %{"_id" => id}
 
 end

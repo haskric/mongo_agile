@@ -64,6 +64,7 @@ defmodule MongoAgile.Examples.Api.ApiController do
     collection: "test_api",
     pid_mongo: :mongo,
     install_api: true
+    
   # When install_api: true
   # You will can use the following methods
   #

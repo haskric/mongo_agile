@@ -7,11 +7,12 @@ defmodule MongoAgile.BuilderQueries.DeleteOneBuilder do
 
   """
   defmodule Schema do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :where => :map
-    }
+    @moduledoc false
+    use MapSchema,
+      atomize: true,
+      schema: %{
+          :where => :map
+      }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic
@@ -21,8 +22,8 @@ defmodule MongoAgile.BuilderQueries.DeleteOneBuilder do
     end
   end
   defmacro delete_one(description, keyword) do
-    alias MongoAgile.Queries.DeleteOne
     alias MongoAgile.BuilderQueries.DeleteOneBuilder
+    alias MongoAgile.Queries.DeleteOne
 
     Generic.macro_query(description, keyword, DeleteOneBuilder, DeleteOne)
   end

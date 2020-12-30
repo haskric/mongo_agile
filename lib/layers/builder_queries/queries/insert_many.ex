@@ -16,13 +16,14 @@ defmodule MongoAgile.BuilderQueries.InsertManyBuilder do
 
   """
   defmodule Schema do
-  use MapSchema,
-    atomize: true,
-    schema: %{
-        :documents => :list,
-        :continue_on_error => :bool,
-        :ordered => :bool
-    }
+    @moduledoc false
+    use MapSchema,
+      atomize: true,
+      schema: %{
+          :documents => :list,
+          :continue_on_error => :bool,
+          :ordered => :bool
+      }
   end
 
   alias MongoAgile.BuilderQueries.Macros.Generic
@@ -32,8 +33,8 @@ defmodule MongoAgile.BuilderQueries.InsertManyBuilder do
     end
   end
   defmacro insert(description, keyword) do
-    alias MongoAgile.Queries.InsertMany
     alias MongoAgile.BuilderQueries.InsertManyBuilder
+    alias MongoAgile.Queries.InsertMany
 
     Generic.macro_query(description, keyword, InsertManyBuilder, InsertMany)
   end
