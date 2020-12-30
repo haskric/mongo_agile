@@ -109,8 +109,7 @@ end
 ```
 
 
-## Usage example:
-
+## Usage example
 
 ### Writing queries into Controller
 

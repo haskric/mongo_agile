@@ -47,7 +47,7 @@ defmodule MongoAgile.MixProject do
 
   def docs do
     [
-      main: "MongoAgile",
+      main: "readme",
       extras: [
         "README.md"
       ]

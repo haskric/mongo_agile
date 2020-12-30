@@ -1,5 +1,7 @@
 defmodule MongoAgile.Queries.AgilQuery do
-  @moduledoc false
+  @moduledoc """
+  The main proxy function of execution of queries
+  """
   def run_query(query) do
     module = get_module(query.base.query_name)
     apply(module, :exe, [query])
