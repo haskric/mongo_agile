@@ -7,15 +7,21 @@ Mongo Agile Library for Elixir, with a micro-language integrated query
 ```elixir
 def deps do
   [
-    {:mongo_agile, "~> 0.7.0"}
+    {:mongo_agile, "~> 0.8.0"}
   ]
 end
 ```
 
 ### Connection
-Here you can see a basic example of connection.
+In this section, you have some examples of connection with database.
 
 We use the driver mongodb, then you need configure the connection following the official documentation. https://hexdocs.pm/mongodb/Mongo.html#start_link/1
+
+
+```elixir
+{:ok, _conn} = Mongo.start_link(name: :mongo, database: "test", pool_size: 2)
+```
+
 
 ```elixir
 def start(_type, _args) do
