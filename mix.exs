@@ -5,8 +5,8 @@ defmodule MongoAgile.MixProject do
   def project do
     [
       app: :mongo_agile,
-      version: "0.8.0",
-      elixir: "~> 1.10",
+      version: "0.8.1",
+      elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
@@ -29,7 +29,7 @@ defmodule MongoAgile.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:mongodb, "~> 0.5.1"},
+      {:mongodb, "~> 1.0.0-beta.1"},
       {:map_schema, ">= 0.0.0"},
 
       # mix docs
