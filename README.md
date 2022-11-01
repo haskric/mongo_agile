@@ -7,7 +7,7 @@ Mongo Agile Library for Elixir, with a micro-language integrated query
 ```elixir
 def deps do
   [
-    {:mongo_agile, "~> 0.8.1"}
+    {:mongo_agile, "~> 0.8.1-rc"}
   ]
 end
 ```

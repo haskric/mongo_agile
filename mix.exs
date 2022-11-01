@@ -5,7 +5,7 @@ defmodule MongoAgile.MixProject do
   def project do
     [
       app: :mongo_agile,
-      version: "0.8.1",
+      version: "0.8.1-rc",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       description: description(),
